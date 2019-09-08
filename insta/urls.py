@@ -1,20 +1,16 @@
 from django.urls import path
 
-from .views import (
-    PostListView,
-    PostUpdateView,
-    PostDetailView,
-    PostDeleteView,
-    PostCreateView  # new
-)
+from . import  views
 
 urlpatterns = [ 
-    path('', PostListView.as_view(), name='post_list'), 
+    path('', views.PostListView.as_view(), name='post_list'), 
     path('<int:pk>/edit/',
-         PostUpdateView.as_view(), name='post_update'),
+         views.PostUpdateView.as_view(), name='post_update'),
     path('<int:pk>/',
-         PostDetailView.as_view(), name='post_detail'),
+         views.PostDetailView.as_view(), name='post_detail'),
     path('<int:pk>/delete/',
-         PostDeleteView.as_view(), name='post_delete'),
-    path('new/', PostCreateView.as_view(), name='post_new'),
+         views.PostDeleteView.as_view(), name='post_delete'),
+    path('new/', views.PostCreateView.as_view(), name='post_new'),
+    path('like', views.addLike, name='addLike'),  #slide7: like-ajax
+    # 注意：like 不要加 /，因为index.js 中的 create_like() 跳转到的地址不含 /
 ]

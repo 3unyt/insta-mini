@@ -10,6 +10,7 @@ django = "*"
 django-imagekit = "*"
 pillow = "*"
 django-crispy-forms = "*"
+django-annoying = "*"
 
 [requires]
 python_version = "3.7"

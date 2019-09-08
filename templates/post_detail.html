@@ -1,7 +1,7 @@
 <!-- (slide7) build a more fancy post_detail-->
 {% extends "base.html" %}
 
-{% comment %} {% load custom_tags %} {% endcomment %}
+{% load custom_tags %}
 
 {% block content %}
 
@@ -30,7 +30,7 @@
         </div>
 
         <div class="comments-portion">
-            {% comment %} <div class="likes-timestamp-row">
+            <div class="likes-timestamp-row">
                 <div class="likes">
                     {% if object.get_like_count %}
                         {{ object.get_like_count }} like{% if object.get_like_count > 1 %}s{% endif %}
@@ -38,11 +38,13 @@
                 </div>
             </div>
             <section class="input-row">
+                <!-- 增强版爱心：点一下填充爱心❤ ️并且更新点赞data -->
                 <i class="fa {% has_user_liked_post post user %} submit-like" aria-hidden="true"></i>
+
                 <div class="hidden-data {{ post.pk }}" style="display: none;">
                     <span class="post-pk">{{ post.pk }}</span>
                 </div>
-            </section> {% endcomment %}
+            </section>
             <div class="comments">
                 {% for comment in post.comments.all %}
                     <p>

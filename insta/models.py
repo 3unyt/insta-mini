@@ -28,6 +28,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail', args=[str(self.id)])
+    
+    def get_like_count(self):       # slide 7
+        return self.likes.count()
+    
+    def get_comment_count(self):
+        return self.comments.count()
 
 
 class Comment(models.Model):
@@ -47,7 +53,7 @@ class Comment(models.Model):
         return self.comment
 
     def get_absolute_url(self):
-        return reverse('article_list')
+        return reverse('post_list')
 
 
 class Like(models.Model):

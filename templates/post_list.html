@@ -1,7 +1,7 @@
 <!-- templates/post_list.html -->
 {% extends "base.html" %}
 
-{% comment %} {% load custom_tags %} {% endcomment %}
+{% load custom_tags %}
 
 {% block content %}
 
@@ -26,17 +26,22 @@
                 </a>
 
                 <div class="card__panel-body">
-                    {% comment %} <div class="likes">
+                    <div class="likes">
                         {% if post.get_like_count %}
                             {{ post.get_like_count }} like{% if post.get_like_count > 1 %}s{% endif %}
                         {% endif %}
                     </div>
+
+                    
                     <section class="input-row">
+                        <!-- 增强版爱心：点一下填充爱心❤ ️并且更新点赞data -->
                         <i class="fa {% has_user_liked_post post user %} submit-like" aria-hidden="true"></i>
+                        
                         <div class="hidden-data {{ post.pk }}" style="display: none;">
                             <span class="post-pk">{{ post.pk }}</span>
                         </div>
-                    </section> {% endcomment %}
+                    </section>
+
                     <div class="comments">
                         {% for comment in post.comments.all %}
                             <p>
@@ -45,6 +50,8 @@
                             </p>
                         {% endfor %}                  
                     </div>
+
+                    
                 </div>
             </div>
         </div>
