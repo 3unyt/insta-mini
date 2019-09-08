@@ -12,7 +12,7 @@
             
                 <div class="card__panel-head">
                     <div class="poster__info">
-                        <a href="{% url 'user_detail' post.author.id %}" class="poster__name">
+                        <a href="{% url 'user_detail' post.author.pk %}" class="poster__name">
                             {% if post.author.profile_pic %}
                                 <img class="poster__profilepic" src="/{{ post.author.profile_pic }}">
                             {% endif %}
@@ -37,6 +37,14 @@
                             <span class="post-pk">{{ post.pk }}</span>
                         </div>
                     </section> {% endcomment %}
+                    <div class="comments">
+                        {% for comment in post.comments.all %}
+                            <p>
+                                <span class="font-weight-bold">{{ comment.author }} &middot;</span>
+                                {{ comment }}
+                            </p>
+                        {% endfor %}                  
+                    </div>
                 </div>
             </div>
         </div>

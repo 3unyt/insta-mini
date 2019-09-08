@@ -10,6 +10,7 @@ class SignUp(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
-class UserDetailView(DetailView):       # video8.2
+class UserDetailView(generic.DetailView):       # video8.2
     model = CustomUser
-    template = 'user_detail.html'
+    
+    # template file: ./templates/users/customuser_detail.html
