@@ -7,12 +7,12 @@
 <div class="jumbotron">
   <h1 class="display-4">Welcome to InstaMini</h1>
   <p class="lead">A mini Instagram website built with Django.</p>
-  {% comment %} <p class="lead">
-    <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View All Articles</a>
-  </p> {% endcomment %}
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'post_list' %}" role="button">View All Posts</a>
+  </p>
 </div>
-
-{% comment %} {% if user.is_authenticated %}
+{% comment %} 
+{% if user.is_authenticated %}
     Hi {{ user.username }}!
     <p><a href="{% url 'logout' %}">logout</a></p> 
 {% else %}

@@ -135,3 +135,5 @@ LOGOUT_REDIRECT_URL = 'home'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TIME_ZONE = 'America/Los_Angeles'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
