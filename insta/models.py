@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from imagekit.models import ProcessedImageField
-
+from users.models import CustomUser
 # Create your models here.
 
 class Post(models.Model):
@@ -17,7 +17,7 @@ class Post(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        CustomUser,
         on_delete=models.CASCADE,
         related_name='my_posts'     
             # use `user.my_posts` to get all posts from the user

@@ -5,7 +5,8 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from annoying.decorators import ajax_request        # slide 7 (需要预先安装 django-annoying)
 
-from .models import Post, Like
+from .models import Post, Like, Comment
+
 
 
 class PostListView(LoginRequiredMixin, ListView): 
@@ -67,4 +68,32 @@ def addLike(request):   # non-class-based view
         'post_pk': post_pk
     }
 
+@ajax_request
+def addComment(request):
+    comment_text = request.POST.get('comment_text')
+    post_pk = request.POST.get('post_pk')
+    post = Post.objects.get(pk=post_pk)
+    commenter_info = {}
+
+    try:
+        comment = Comment(comment=comment_text, author=request.user, post=post)
+        comment.save()
+
+        username = request.user.username
+
+        commenter_info = {
+            'username': username,
+            'comment_text': comment_text
+        }
+
+        result = 1
+    except Exception as e:
+        print(e)
+        result = 0
+
+    return {
+        'result': result,
+        'post_pk': post_pk,
+        'commenter_info': commenter_info
+    }
 

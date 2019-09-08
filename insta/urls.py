@@ -13,4 +13,6 @@ urlpatterns = [
     path('new/', views.PostCreateView.as_view(), name='post_new'),
     path('like', views.addLike, name='addLike'),  #slide7: like-ajax
     # 注意：like 不要加 /，因为index.js 中的 create_like() 跳转到的地址不含 /
+
+    path('comment', views.addComment, name='addComment'),
 ]
