@@ -1,7 +1,5 @@
 # users/views.py
 from .forms import CustomUserCreationForm
-from django.views.generic import DetailView
-from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy 
 from django.views import generic
 from .models import CustomUser, UserConnection
@@ -18,6 +16,12 @@ class UserDetailView(LoginRequiredMixin, generic.DetailView):       # video8.2
     model = CustomUser
     login_utl = 'login'
     # template file: ./templates/users/customuser_detail.html
+
+class UserEditView(LoginRequiredMixin, generic.edit.UpdateView):
+    model = CustomUser
+    template_name = 'user_edit.html'
+    fields = ['profile_pic', 'username']
+    login_url = 'login'
 
 @ajax_request
 def toggleFollow(request):
