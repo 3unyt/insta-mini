@@ -3,7 +3,15 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm 
-from .models import CustomUser
+from .models import CustomUser, UserConnection
+
+class FollowingInline(admin.TabularInline):
+    model = UserConnection
+    fk_name = 'creator'
+
+class FollowerInline(admin.TabularInline):
+    model = UserConnection
+    fk_name = 'following'
 
 class CustomUserAdmin(UserAdmin):
     '''
@@ -15,4 +23,10 @@ class CustomUserAdmin(UserAdmin):
     list_display = ['email', 'username', 'profile_pic']
     model = CustomUser
 
+    inlines = [
+        FollowerInline,
+        FollowingInline,
+    ]  
+
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(UserConnection)

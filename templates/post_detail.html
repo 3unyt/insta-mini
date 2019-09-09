@@ -14,22 +14,18 @@
                 {% endif %}
                 {{ object.author.username }}
             </a> 
-            |
-            <a href="{% url 'post_list' %}">All Posts</a> |
-
-            {% if request.user == post.author %}
-            <a href="{% url 'post_update' post.pk %}">Edit</a> | 
-            <a href="{% url 'post_delete' post.pk %}">Delete</a>
-            {% endif %}
-            
+        
         </div>
         
-
+        
         <div class="image__wrapper">
             <img class="card__main-image" src="/{{object.image}}" width='1000', height='1000'>
         </div>
 
         <div class="comments-portion">
+            <div>
+            <p> <b>{{object.title}} </b></p>
+            </div>
             <div class="likes-timestamp-row">
                 <div class="likes">
                     {% if object.get_like_count %}
@@ -62,6 +58,15 @@
                     <span class="post-pk">{{ post.pk }}</span>
                 </div>
             </section>
+
+            <div>
+            <a href="{% url 'post_list' %}"> > All Posts</a> 
+
+            {% if request.user == post.author %}
+            |<a href="{% url 'post_update' post.pk %}">Edit</a> | 
+            <a href="{% url 'post_delete' post.pk %}">Delete</a>
+            {% endif %}
+            </div>
             
         </div>
         
