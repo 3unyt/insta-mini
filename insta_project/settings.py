@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
     # 3rd party
     'imagekit',
-    'crispy_forms'   
+    'crispy_forms',
     'whitenoise.runserver_nostatic', # new!
 ]
 
