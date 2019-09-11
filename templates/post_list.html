@@ -28,7 +28,12 @@
                     <img class="card__main-image" src="/{{ post.image }}" width=500>
                 </a>
 
+                
+
                 <div class="card__panel-body">
+                    <div>
+                        <p> <b>{{post.title}} </b></p>
+                    </div>
                     <div class="likes">
                         {% if post.get_like_count %}
                             {{ post.get_like_count }} like{% if post.get_like_count > 1 %}s{% endif %}
